@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Наші Герої</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/heroes.css" />
+</head>
+<body>
+  <h1 class="page-title">Наші Герої</h1>
+
+  <!-- 🔊 Контроль звуку -->
+  <div class="audio-controls">
+    <button id="mute-toggle">🔊</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+  </div>
+
+  <!-- 🎵 Музика -->
+  <audio id="bg-music" autoplay loop>
+    <source src="audio/off-road.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- 🦸 Герої -->
+  <div class="card-grid" id="hero-grid"></div>
+
+  <!-- 📜 Скріпт -->
+  <script>
+    // Перехід назад при оновленні сторінки
+    if (performance.navigation.type === 1) {
+      window.location.href = 'index.html';
+    }
+
+    // Герої
+    const heroes = [
+      {
+        name: "Captain Dave",
+        img: "img/Dave.png",
+        desc: "Лідер перегонів, що перемагає на кожному повороті."
+      },
+      {
+        name: "Jerry",
+        img: "img/Jerry.png",
+        desc: "Стрілець з ідеальним прицілом і холодним розумом."
+      },
+      {
+        name: "Jim",
+        img: "img/Jim.png",
+        desc: "Пілотка меха, що зносить все на своєму шляху."
+      },
+      {
+        name: "Bohdan",
+        img: "img/me.png",
+        desc: "Майстер харизми. Один погляд – і все."
+      },
+      {
+        name: "Francis",
+        img: "img/Francis.png",
+        desc: "Володар часу і простору, що керує реальністю."
+      },
+      {
+        name: "Darren",
+        img: "img/Darren.png",
+        desc: "Неперевершений стратег і тактик у будь-якій битві."
+      },
+      {
+        name: "Ross",
+        img: "img/Ross.png",
+        desc: "Експерт з технологій, що створює майбутнє сьогодні."
+      },
+      {
+        name: "Cody",
+        img: "img/Cody.png",
+        desc: "Майстер маскування і шпигунських операцій."
+      },
+      {
+        name: "Asheil",
+        img: "img/Asheil.png",
+        desc: "Віртуоз бойових мистецтв з блискавичною швидкістю."
+      },
+      {
+        name: "Scott",
+        img: "img/Scott.jpg",
+        desc: "Непереможний борець, що ніколи не здається."
+      },
+       {
+        name: "Val",
+        img: "img/Val.jpg",
+        desc: "Непереможний борець, що ніколи не здається."
+      },
+       {
+        name: "Alibhon",
+        img: "img/Alibhon.jpg",
+        desc: "Непереможний борець, що ніколи не здається."
+      },
+       {
+        name: "Darren",
+        img: "img/Darrell.jpg",
+        desc: "Непереможний борець, що ніколи не здається."
+      },
+       {
+        name: "Melany",
+        img: "img/Melany.jpg",
+        desc: "Непереможний борець, що ніколи не здається."
+      },
+      {
+        name: "Melanie",
+        img: "img/Melanie.jpg",
+        desc: "Майстер виживання в найекстремальніших умовах."
+      }
+    ];
+
+    // Генерація карток
+    const grid = document.getElementById('hero-grid');
+    heroes.forEach(hero => {
+      const card = document.createElement('div');
+      card.className = 'hero-card';
+      card.innerHTML = `
+        <img src="${hero.img}" alt="${hero.name}" />
+        <h2>${hero.name}</h2>
+        <p>${hero.desc}</p>
+      `;
+      grid.appendChild(card);
+    });
+
+    // 🎧 Звук
+    const music = document.getElementById('bg-music');
+    music.volume = 0.5;
+
+    const muteBtn = document.getElementById('mute-toggle');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    muteBtn.addEventListener('click', () => {
+      music.muted = !music.muted;
+      muteBtn.textContent = music.muted ? '🔇' : '🔊';
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      music.volume = volumeSlider.value;
+    });
+  </script>
+</body>
+</html>
