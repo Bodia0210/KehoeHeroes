@@ -8,137 +8,25 @@
   <link rel="stylesheet" href="style/heroes.css" />
 </head>
 <body>
+
   <h1 class="page-title">KEL Heroes</h1>
 
-  <!-- 🔊 Контроль звуку -->
+  <!-- Audio controls -->
   <div class="audio-controls">
-    <button id="mute-toggle">🔊</button>
+    <button type="button" id="mute-toggle">🔊</button>
     <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
   </div>
 
-  <!-- 🎵 Музика -->
-  <audio id="bg-music" autoplay loop>
-    <source src="audio/off-road.mp3" type="audio/mpeg" />
+  <!-- Background music -->
+  <audio id="bg-music" loop>
+    <source src="audio/off-road.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- 🦸 Герої -->
-  <div class="card-grid" id="hero-grid"></div>
+  <!-- Carousel -->
+  <div class="carousel">
+    <div class="carousel-track" id="hero-grid"></div>
+  </div>
 
-  <!-- 📜 Скріпт -->
-  <script>
-    // Перехід назад при оновленні сторінки
-    if (performance.navigation.type === 1) {
-      window.location.href = 'index.html';
-    }
-
-    // Герої
-    const heroes = [
-      {
-        name: "Iron Darren",
-        img: "img/Darren.png",
-        desc: "Owner and founder of the company — legendary strategist, tactical mastermind, and full-time hero of commercial battles."
-      },
-      {
-        name: "Ross",
-        img: "img/Ross.png",
-        desc: "Advisor to Darren. Powered by logic, technology, and very well-timed ideas."
-      },
-      {
-        name: "Captain Dave",
-        img: "img/Dave.png",
-        desc: "Сalm under pressure, fast with decisions, and always thinking one lap ahead."
-      },
-      {
-        name: "Jerry",
-        img: "img/Jerry.png",
-        desc: "Стрілець з ідеальним прицілом і холодним розумом."
-      },
-      {
-        name: "Jim",
-        img: "img/Jim.png",
-        desc: "Пілотка меха, що зносить все на своєму шляху."
-      },
-      {
-        name: "Bohdan",
-        img: "img/me.png",
-        desc: "Майстер харизми. Один погляд – і все."
-      },
-      {
-        name: "Francis",
-        img: "img/Francis.png",
-        desc: "Володар часу і простору, що керує реальністю."
-      },
-    
-      {
-        name: "Cody",
-        img: "img/Cody.png",
-        desc: "Майстер маскування і шпигунських операцій."
-      },
-      {
-        name: "Asheil",
-        img: "img/Asheil.png",
-        desc: "Віртуоз бойових мистецтв з блискавичною швидкістю."
-      },
-      {
-        name: "Scott",
-        img: "img/Scott.png",
-        desc: "Непереможний борець, що ніколи не здається."
-      },
-       {
-        name: "Val",
-        img: "img/Val.png",
-        desc: "Непереможний борець, що ніколи не здається."
-      },
-       {
-        name: "Alibhon",
-        img: "img/Alibhon.png",
-        desc: "Непереможний борець, що ніколи не здається."
-      },
-       {
-        name: "Darrell",
-        img: "img/Darrell.png",
-        desc: "Master of survival in the most extreme conditions."
-      },
-       {
-        name: "Melany",
-        img: "img/Melany.png",
-        desc: "Master of survival in the most extreme conditions."
-      },
-      {
-        name: "Melanie",
-        img: "img/Melanie.jpg",
-        desc: "Master of survival in the most extreme conditions."
-      }
-    ];
-
-    // Генерація карток
-    const grid = document.getElementById('hero-grid');
-    heroes.forEach(hero => {
-      const card = document.createElement('div');
-      card.className = 'hero-card';
-      card.innerHTML = `
-        <img src="${hero.img}" alt="${hero.name}" />
-        <h2>${hero.name}</h2>
-        <p>${hero.desc}</p>
-      `;
-      grid.appendChild(card);
-    });
-
-    // 🎧 Звук
-    const music = document.getElementById('bg-music');
-    music.volume = 0.5;
-
-    const muteBtn = document.getElementById('mute-toggle');
-    const volumeSlider = document.getElementById('volume-slider');
-
-    muteBtn.addEventListener('click', () => {
-      music.muted = !music.muted;
-      muteBtn.textContent = music.muted ? '🔇' : '🔊';
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      music.volume = volumeSlider.value;
-    });
-  </script>
+  <script src="js/heroes.js"></script>
 </body>
 </html>
