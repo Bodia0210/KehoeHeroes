@@ -83,3 +83,12 @@ body {
 @keyframes scroll-left {
   to { transform: translateX(-50%); }
 }
+
+.hero-card {
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: scale(1.08);
+  z-index: 5;
+}
