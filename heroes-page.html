@@ -12,9 +12,17 @@
   <h1 class="page-title">KEL Heroes</h1>
 
   <!-- Audio controls -->
-  <div class="audio-controls">
-    <button type="button" id="mute-toggle">🔊</button>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+  <div class="audio-controls" role="group" aria-label="Audio controls">
+    <button type="button" id="mute-toggle" aria-label="Mute/Unmute">🔊</button>
+    <input
+      type="range"
+      id="volume-slider"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.5"
+      aria-label="Volume"
+    />
   </div>
 
   <!-- Background music -->
@@ -22,8 +30,8 @@
     <source src="audio/off-road.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Carousel -->
-  <div class="carousel">
+  <!-- Static grid (kept your class names) -->
+  <div class="carousel" aria-label="Heroes gallery">
     <div class="carousel-track" id="hero-grid"></div>
   </div>
 
